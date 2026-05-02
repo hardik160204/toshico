@@ -12,31 +12,30 @@ const Home = () => {
   return (
     <div className="pt-20 bg-white overflow-hidden">
       
-      {/* 1. HERO SECTION */}
-      {/* THIS SECTION TAG WAS MISSING! */}
-      <section className="relative w-full min-h-[80vh] flex flex-col items-center justify-center overflow-hidden pt-24 pb-20">
+      {/* 1. HERO SECTION REDESIGNED FOR MOBILE BANNER */}
+      <section className="relative w-full bg-slate-950 min-h-0 md:min-h-[80vh] flex flex-col md:justify-center overflow-hidden">
         
-        {/* BACKGROUND IMAGE */}
-        <div className="absolute inset-0 w-full h-full z-0 bg-slate-950">
-          
-          {/* Swapped to object-right for mobile to pan the camera away from the center logo */}
+        {/* IMAGE: Banner on mobile (aspect-video), Full background on desktop */}
+        <div className="relative w-full aspect-video md:absolute md:inset-0 md:w-full md:h-full z-0">
           <img 
             src={heroImage} 
             alt="Family enjoying Toshico Smart TV" 
-            className="w-full h-full object-cover object-right md:object-center" 
+            className="w-full h-full object-cover object-center" 
           />
           
-          {/* Added a slightly darker base tint specifically for mobile readability */}
-          <div className="absolute inset-0 bg-slate-950/40 md:bg-transparent"></div>
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 md:via-slate-900/60 to-slate-900/50 md:to-slate-900/40"></div>
+          {/* Mobile gradient to smoothly blend the bottom of the image into the dark text area */}
+          <div className="md:hidden absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+          
+          {/* Desktop full-screen gradient overlay */}
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-slate-900/40"></div>
         </div>
 
+        {/* TEXT CONTENT: Sits below the image on mobile, overlays the image on desktop */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 max-w-5xl mx-auto px-6 text-center mt-8 md:mt-0"
+          className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-10 pb-16 md:py-20"
         >
           <span className="inline-block py-1.5 px-4 rounded-full bg-red-600/90 text-white text-xs font-bold tracking-[0.2em] mb-6 backdrop-blur-sm shadow-xl">
             THE NEW STANDARD
