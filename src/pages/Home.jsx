@@ -13,14 +13,23 @@ const Home = () => {
     <div className="pt-20 bg-white overflow-hidden">
       
       {/* 1. HERO SECTION */}
+      {/* THIS SECTION TAG WAS MISSING! */}
       <section className="relative w-full min-h-[80vh] flex flex-col items-center justify-center overflow-hidden pt-24 pb-20">
+        
+        {/* BACKGROUND IMAGE */}
         <div className="absolute inset-0 w-full h-full z-0 bg-slate-950">
+          
+          {/* Swapped to object-right for mobile to pan the camera away from the center logo */}
           <img 
             src={heroImage} 
             alt="Family enjoying Toshico Smart TV" 
-            className="w-full h-full object-cover object-[15%_center] md:object-center" 
+            className="w-full h-full object-cover object-right md:object-center" 
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/40"></div>
+          
+          {/* Added a slightly darker base tint specifically for mobile readability */}
+          <div className="absolute inset-0 bg-slate-950/40 md:bg-transparent"></div>
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 md:via-slate-900/60 to-slate-900/50 md:to-slate-900/40"></div>
         </div>
 
         <motion.div 
@@ -87,7 +96,7 @@ const Home = () => {
                 <div className="flex items-center justify-between mt-6 pt-6 border-t border-slate-800">
                   <div>
                     <p className="text-xs text-gray-500 mb-1">Starting at</p>
-                    <p className="text-2xl font-black text-white">₹XX,XXX</p> 
+                    <p className="text-2xl font-black text-white">₹9,000</p> 
                   </div>
                   <Link to="/products" className="bg-[#B91C1C] text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-red-800 transition-colors">
                     View Details
@@ -119,7 +128,7 @@ const Home = () => {
                 <div className="flex items-center justify-between mt-6 pt-6 border-t border-slate-800">
                   <div>
                     <p className="text-xs text-gray-500 mb-1">Starting at</p>
-                    <p className="text-2xl font-black text-white">₹XX,XXX</p> 
+                    <p className="text-2xl font-black text-white">₹15,000</p> 
                   </div>
                   <Link to="/products" className="bg-[#B91C1C] text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-red-800 transition-colors">
                     View Details
@@ -164,14 +173,12 @@ const Home = () => {
       <section className="py-24 bg-gray-50/50 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
           
-          {/* LEFT SIDE: INTERACTIVE HOTSPOTS IMAGE */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="w-full md:w-1/2 relative z-10"
           >
-            {/* THIS IS THE CONTAINER THAT WENT MISSING! */}
             <div className="relative aspect-square md:aspect-[4/5] lg:aspect-square bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200">
               
               <img 
@@ -216,10 +223,9 @@ const Home = () => {
                 </div>
               </div>
 
-            </div> {/* END OF THE MISSING CONTAINER */}
+            </div> 
           </motion.div>
 
-          {/* RIGHT SIDE: THE TEXT YOU WERE MISSING! */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
